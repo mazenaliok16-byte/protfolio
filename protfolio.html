@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mzx Portfolio</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #14213d;
+            --text: #e2e8f0;
+            --accent: #38bdf8;
+            --accent-2: #00eeff;
+            --shadow: rgba(15, 23, 42, 0.35);
+            font-family: Inter, system-ui, sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 35%),
+                        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.12), transparent 18%),
+                        radial-gradient(circle at 80% 80%, rgba(249, 115, 22, 0.12), transparent 18%);
+            pointer-events: none;
+        }
+        .layout {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 32px 24px 48px;
+            position: relative;
+            z-index: 1;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 24px;
+            transition: color 0.2s ease;
+        }
+        nav a:first-child {
+            margin-left: 0;
+        }
+        nav a:hover {
+            color: var(--accent);
+        }
+        .hero {
+            padding: 48px 32px;
+            background: rgba(15, 23, 42, 0.88);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 28px;
+            box-shadow: 0 30px 80px var(--shadow);
+        }
+        .hero h1 {
+            font-size: clamp(2.75rem, 4vw, 4.5rem);
+            margin-bottom: 16px;
+            letter-spacing: -0.05em;
+        }
+        .hero p {
+            max-width: 720px;
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+            color: #cbd5e1;
+        }
+        .hero .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 160px;
+            padding: 14px 20px;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .button-primary {
+            background: linear-gradient(135deg, var(--accent), #60a5fa);
+            color: #0f172a;
+            box-shadow: 0 18px 30px rgba(56, 189, 248, 0.18);
+        }
+        .button-secondary {
+            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--text);
+        }
+        .button:hover {
+            transform: translateY(-1px);
+        }
+        section {
+            margin-top: 48px;
+        }
+        .section-heading {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        .card-grid {
+            display: grid;
+            gap: 24px;
+        }
+        .card {
+            padding: 28px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+        }
+        .card h3 {
+            margin-bottom: 14px;
+            font-size: 1.35rem;
+        }
+        .card p {
+            color: #cbd5e1;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .tag {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(56, 189, 248, 0.14);
+            color: #bae6fd;
+            font-size: 0.85rem;
+        }
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+        }
+        .skill-pill {
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+        }
+        .skill-pill strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+        footer {
+            margin-top: 56px;
+            padding: 24px 0 12px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 700px) {
+            .hero {
+                padding: 28px 20px;
+            }
+            .button {
+                min-width: auto;
+                width: 100%;
+            }
+            nav {
+                width: 100%;
+            }
+            nav a {
+                margin-left: 0;
+                margin-right: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <header>
+            <div class="brand">mzx</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#work">Work</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <p class="section-heading">Creative Portfolio</p>
+            <h1>Designing modern digital experiences as mzx.</h1>
+            <p>Build with clarity, speed, and personality. I create clean interfaces, interactive prototypes, and polished web projects that stand out.</p>
+            <div class="buttons">
+                <a class="button button-primary" href="#work">View Projects</a>
+                <a class="button button-secondary" href="#contact">Get in Touch</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <p class="section-heading">About Me</p>
+            <div class="card">
+                <h3>Hello, I'm mzx</h3>
+                <p>I am a modern portfolio creator who blends strategy with design. My work spans sleek landing pages, responsive websites, and brand-forward web experiences. I focus on fast, accessible, and polished results.</p>
+            </div>
+        </section>
+
+        <section id="work">
+            <p class="section-heading">Featured Work</p>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Landing Page Redesign</h3>
+                    <p>Revamped a product landing page with a minimal visual system, improved onboarding flow, and mobile-first interactions.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">UI</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Portfolio Showcase</h3>
+                    <p>Developed a responsive portfolio site featuring project highlights, animated sections, and a modern dark palette.</p>
+                    <div class="project-tags">
+                        <span class="tag">Responsive</span>
+                        <span class="tag">Design</span>
+                        <span class="tag">Web</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Brand Identity Concept</h3>
+                    <p>Created a fresh branding system with a logo, color palette, and style guide for a startup concept.</p>
+                    <div class="project-tags">
+                        <span class="tag">Branding</span>
+                        <span class="tag">Concept</span>
+                        <span class="tag">Creative</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <p class="section-heading">Skills</p>
+            <div class="skills">
+                <div class="skill-pill">
+                    <strong>Web Design</strong>
+                    Visual systems, typography, layouts
+                </div>
+                <div class="skill-pill">
+                    <strong>Front-end</strong>
+                    HTML, CSS, JavaScript
+                </div>
+                <div class="skill-pill">
+                    <strong>Prototyping</strong>
+                    Figma, interaction flows
+                </div>
+                <div class="skill-pill">
+                    <strong>Performance</strong>
+                    Speed, accessibility, responsive
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <p class="section-heading">Contact</p>
+            <div class="card">
+                <h3>Let's build something modern.</h3>
+                <p>Reach out to start a project, collaborate, or discuss ideas. I’m ready to help bring your next digital experience to life.</p>
+                <p>Email: <a href="mailto:hello@mzx.dev" style="color: var(--accent); text-decoration: none;">hello@mzx.dev</a></p>
+            </div>
+        </section>
+
+        <footer>
+            © mzx • Modern portfolio built with clean web design.
+        </footer>
+    </div>
+</body>
+</html>
